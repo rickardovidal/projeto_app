@@ -69,7 +69,7 @@ export const SubjectsPage: React.FC = () => {
           {subjects.map((subject) => (
             <div
               key={subject.id}
-              className="group relative bg-bg-secondary border border-border rounded-2xl p-6 transition-all hover:border-accent-blue/50 hover:shadow-lg overflow-hidden"
+              className="premium-card group relative rounded-2xl p-6 transition-all hover:border-accent-blue/50 hover:-translate-y-0.5 overflow-hidden"
             >
               <div 
                 className="absolute top-0 left-0 w-1 h-full"

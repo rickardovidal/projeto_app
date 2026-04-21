@@ -68,7 +68,7 @@ export const TodosPage: React.FC = () => {
       </div>
 
       {/* Filtros */}
-      <div className="flex flex-wrap gap-2 p-1 bg-bg-secondary border border-border rounded-lg w-full sm:w-fit">
+      <div className="premium-card flex flex-wrap gap-2 p-1 rounded-lg w-full sm:w-fit">
         {(['ALL', 'PENDING', 'DONE'] as Filter[]).map((f) => (
           <button
             key={f}
@@ -103,7 +103,7 @@ export const TodosPage: React.FC = () => {
             <div
               key={todo.id}
               className={cn(
-                'group flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-bg-secondary border border-border rounded-xl transition-all hover:border-accent-blue/30 gap-3',
+                'group premium-card flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl transition-all hover:border-accent-blue/30 gap-3',
                 todo.completed && 'opacity-60 bg-bg-primary/50'
               )}
             >

@@ -12,26 +12,26 @@ export const Badge: React.FC<BadgeProps> = ({ children, variant, type = 'default
   const getStyles = () => {
     if (type === 'status') {
       switch (variant) {
-        case 'PENDING': return 'bg-bg-tertiary text-text-secondary';
-        case 'IN_PROGRESS': return 'bg-accent-blue/20 text-accent-blue';
-        case 'DONE': return 'bg-success/20 text-success';
-        default: return 'bg-bg-tertiary text-text-primary';
+        case 'PENDING': return 'border border-border/70 bg-bg-tertiary/70 text-text-secondary';
+        case 'IN_PROGRESS': return 'border border-accent-blue/35 bg-accent-blue/15 text-accent-blue';
+        case 'DONE': return 'border border-success/35 bg-success/15 text-success';
+        default: return 'border border-border/70 bg-bg-tertiary/70 text-text-primary';
       }
     }
     if (type === 'priority') {
       switch (variant) {
-        case 'LOW': return 'bg-bg-tertiary text-text-muted';
-        case 'MEDIUM': return 'bg-warning/20 text-warning';
-        case 'HIGH': return 'bg-danger/20 text-danger';
-        default: return 'bg-bg-tertiary text-text-primary';
+        case 'LOW': return 'border border-border/70 bg-bg-tertiary/70 text-text-muted';
+        case 'MEDIUM': return 'border border-warning/35 bg-warning/15 text-warning';
+        case 'HIGH': return 'border border-danger/35 bg-danger/15 text-danger';
+        default: return 'border border-border/70 bg-bg-tertiary/70 text-text-primary';
       }
     }
-    return 'bg-bg-tertiary text-text-primary';
+    return 'border border-border/70 bg-bg-tertiary/70 text-text-primary';
   };
 
   return (
     <span className={cn(
-      'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors',
+      'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]',
       getStyles(),
       className
     )} {...props}>

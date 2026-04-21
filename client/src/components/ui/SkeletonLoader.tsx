@@ -24,7 +24,7 @@ export const SkeletonLoader: React.FC<SkeletonProps> = ({
   return (
     <div
       className={cn(
-        'animate-pulse bg-bg-tertiary',
+        'animate-pulse bg-gradient-to-r from-bg-tertiary/90 via-bg-tertiary to-bg-tertiary/90',
         variants[variant],
         className
       )}

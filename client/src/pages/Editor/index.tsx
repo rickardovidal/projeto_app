@@ -217,7 +217,7 @@ const DocumentList: React.FC = () => {
               key={doc.id}
               type="button"
               onClick={() => navigate(`/editor/${doc.id}`)}
-              className="text-left bg-bg-secondary border border-border rounded-xl p-5 hover:border-accent-blue/50 hover:bg-bg-tertiary/30 transition-all group space-y-3"
+              className="premium-card text-left rounded-xl p-5 hover:border-accent-blue/50 transition-all group space-y-3"
             >
               <div className="flex items-start justify-between gap-2">
                 {doc.type === 'LATEX' ? (

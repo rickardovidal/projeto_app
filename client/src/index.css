@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #0F1117;
-  --color-bg-secondary: #1A1D27;
-  --color-bg-tertiary: #252836;
-  --color-border: #2E3244;
-  --color-text-primary: #F1F3F9;
-  --color-text-secondary: #8B92A9;
-  --color-text-muted: #4E5568;
-  --color-accent-blue: #4F86F7;
-  --color-accent-blue-hover: #6B9BF8;
+  --color-bg-primary: #090d16;
+  --color-bg-secondary: #111827;
+  --color-bg-tertiary: #1b2438;
+  --color-border: #2b3752;
+  --color-text-primary: #f3f6ff;
+  --color-text-secondary: #a2afc7;
+  --color-text-muted: #6d7891;
+  --color-accent-blue: #5c8dff;
+  --color-accent-blue-hover: #76a0ff;
   --color-success: #34D399;
   --color-warning: #FBBF24;
   --color-danger: #F87171;
@@ -19,15 +19,15 @@
 }
 
 :root {
-  --bg-primary: #0F1117;
-  --bg-secondary: #1A1D27;
-  --bg-tertiary: #252836;
-  --border: #2E3244;
-  --text-primary: #F1F3F9;
-  --text-secondary: #8B92A9;
-  --text-muted: #4E5568;
-  --accent-blue: #4F86F7;
-  --accent-blue-hover: #6B9BF8;
+  --bg-primary: #090d16;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1b2438;
+  --border: #2b3752;
+  --text-primary: #f3f6ff;
+  --text-secondary: #a2afc7;
+  --text-muted: #6d7891;
+  --accent-blue: #5c8dff;
+  --accent-blue-hover: #76a0ff;
   --success: #34D399;
   --warning: #FBBF24;
   --danger: #F87171;
@@ -37,9 +37,58 @@ body {
   margin: 0;
   min-height: 100dvh;
   overflow-x: hidden;
-  background-color: var(--bg-primary);
+  background:
+    radial-gradient(1000px 600px at -12% -16%, rgba(92, 141, 255, 0.24), transparent 58%),
+    radial-gradient(900px 500px at 115% -24%, rgba(52, 211, 153, 0.15), transparent 62%),
+    var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: rgba(92, 141, 255, 0.35);
+  color: #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(17, 24, 39, 0.65);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 2px solid rgba(17, 24, 39, 0.65);
+  background: rgba(162, 175, 199, 0.35);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(162, 175, 199, 0.55);
+}
+
+.premium-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(125, 150, 191, 0.24);
+  box-shadow: 0 16px 40px rgba(3, 8, 20, 0.45);
+}
+
+.premium-glass {
+  background: rgba(17, 24, 39, 0.62);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(140, 160, 195, 0.2);
 }
 
 #studyflow-datepicker-portal {

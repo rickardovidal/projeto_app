@@ -70,7 +70,7 @@ export const AssignmentsPage: React.FC = () => {
       </div>
 
       {/* Barra de Filtros */}
-      <div className="bg-bg-secondary border border-border rounded-xl p-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 sm:items-end">
+      <div className="premium-card rounded-xl p-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 sm:items-end">
         <div className="w-full sm:flex-1 sm:min-w-[200px]">
           <Input
             placeholder="Procurar por título..."
@@ -134,7 +134,7 @@ export const AssignmentsPage: React.FC = () => {
             <div
               key={assignment.id}
               onClick={() => setSelectedAssignmentId(assignment.id)}
-              className="bg-bg-secondary border border-border rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:border-accent-blue/50 hover:bg-bg-tertiary/30 cursor-pointer group"
+              className="premium-card rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:border-accent-blue/40 cursor-pointer group"
             >
               <div className="flex items-center gap-4 flex-1 min-w-0">
                 <button 

@@ -49,7 +49,7 @@ export const Select: React.FC<SelectProps> = ({
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           className={cn(
-            'flex h-10 w-full items-center justify-between rounded-md border border-border bg-bg-tertiary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-blue',
+            'flex h-11 w-full items-center justify-between rounded-xl border border-border/80 bg-gradient-to-b from-bg-tertiary to-[#151e31] px-3 py-2 text-sm text-text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] focus:border-accent-blue/60 focus:outline-none focus:ring-2 focus:ring-accent-blue/30',
             error && 'border-danger focus:ring-danger'
           )}
         >
@@ -60,7 +60,7 @@ export const Select: React.FC<SelectProps> = ({
         </button>
 
         {isOpen && (
-          <div className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-border bg-bg-secondary p-1 shadow-lg backdrop-blur-md">
+          <div className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl border border-border/70 bg-bg-secondary/95 p-1.5 shadow-[0_20px_40px_rgba(2,6,23,0.5)] backdrop-blur-md">
             {options.map((option) => (
               <button
                 key={option.value}
@@ -70,8 +70,8 @@ export const Select: React.FC<SelectProps> = ({
                   setIsOpen(false);
                 }}
                 className={cn(
-                  'relative flex w-full cursor-default select-none items-center rounded-sm px-3 py-2 text-sm text-text-primary outline-none hover:bg-bg-tertiary focus:bg-bg-tertiary',
-                  value === option.value && 'bg-bg-tertiary text-accent-blue'
+                  'relative flex w-full cursor-default select-none items-center rounded-lg px-3 py-2 text-sm text-text-primary outline-none hover:bg-bg-tertiary focus:bg-bg-tertiary',
+                  value === option.value && 'bg-accent-blue/15 text-accent-blue'
                 )}
               >
                 {option.label}

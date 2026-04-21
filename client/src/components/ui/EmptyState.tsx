@@ -19,10 +19,10 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
 }) => {
   return (
     <div className={cn(
-      'flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-border p-12 text-center',
+      'premium-card flex flex-col items-center justify-center rounded-2xl p-12 text-center',
       className
     )}>
-      <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-bg-tertiary">
+      <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-bg-tertiary/85 border border-border/70">
         {icon || <Ghost className="h-10 w-10 text-text-muted" />}
       </div>
       <h3 className="mb-2 text-xl font-semibold text-text-primary">{title}</h3>

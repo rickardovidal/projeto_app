@@ -88,8 +88,8 @@ export const SettingsPage: React.FC = () => {
       </header>
 
       <div className="space-y-6">
-        <section className="bg-bg-secondary border border-border rounded-2xl overflow-hidden">
-          <div className="p-4 sm:p-6 border-b border-border">
+        <section className="premium-card rounded-2xl overflow-hidden">
+          <div className="p-4 sm:p-6 border-b border-border/70">
             <h2 className="text-lg font-bold text-text-primary flex items-center gap-2">
               <Bell size={20} className="text-accent-blue" /> Notificações
             </h2>
@@ -127,8 +127,8 @@ export const SettingsPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="bg-bg-secondary border border-border rounded-2xl overflow-hidden">
-          <div className="p-4 sm:p-6 border-b border-border">
+        <section className="premium-card rounded-2xl overflow-hidden">
+          <div className="p-4 sm:p-6 border-b border-border/70">
             <h2 className="text-lg font-bold text-text-primary flex items-center gap-2">
               <CalendarIcon size={20} className="text-orange-500" /> Google Calendar
             </h2>
@@ -150,8 +150,8 @@ export const SettingsPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="bg-bg-secondary border border-border rounded-2xl overflow-hidden opacity-50">
-          <div className="p-4 sm:p-6 border-b border-border">
+        <section className="premium-card rounded-2xl overflow-hidden opacity-50">
+          <div className="p-4 sm:p-6 border-b border-border/70">
             <h2 className="text-lg font-bold text-text-primary flex items-center gap-2">
               <Shield size={20} /> Segurança
             </h2>

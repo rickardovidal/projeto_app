@@ -30,17 +30,17 @@ export const MobileNav: React.FC = () => {
 
   return (
     <>
-      <header className="md:hidden h-14 border-b border-border bg-bg-secondary/95 backdrop-blur supports-[backdrop-filter]:bg-bg-secondary/85 flex items-center justify-between px-4">
+      <header className="md:hidden h-14 border-b border-border/70 bg-bg-secondary/88 backdrop-blur-xl supports-[backdrop-filter]:bg-bg-secondary/78 flex items-center justify-between px-4">
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-bg-tertiary text-text-primary"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-bg-tertiary/80 text-text-primary"
           aria-label="Abrir menu"
         >
           <Menu size={18} />
         </button>
-        <span className="text-base font-semibold text-accent-blue">StudyFlow</span>
-        <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent-blue text-xs font-bold text-white">
+        <span className="text-base font-semibold text-text-primary tracking-tight">StudyFlow</span>
+        <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-accent-blue to-[#3d6fe0] text-xs font-bold text-white shadow-[0_8px_20px_rgba(92,141,255,0.35)]">
           {user?.name?.[0] || 'U'}
         </div>
       </header>
@@ -51,16 +51,16 @@ export const MobileNav: React.FC = () => {
           isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
       >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-md" onClick={() => setIsOpen(false)} />
 
         <aside
           className={cn(
-            'absolute inset-y-0 left-0 w-[86%] max-w-xs border-r border-border bg-bg-secondary shadow-2xl transition-transform duration-200 flex flex-col',
+            'premium-glass absolute inset-y-0 left-0 w-[86%] max-w-xs border-r border-border/70 shadow-[0_28px_60px_rgba(2,8,23,0.55)] transition-transform duration-200 flex flex-col',
             isOpen ? 'translate-x-0' : '-translate-x-full'
           )}
         >
-          <div className="h-14 px-4 border-b border-border flex items-center justify-between">
-            <span className="text-lg font-semibold text-accent-blue">Menu</span>
+          <div className="h-14 px-4 border-b border-border/70 flex items-center justify-between">
+            <span className="text-lg font-semibold text-text-primary">Menu</span>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
@@ -78,10 +78,10 @@ export const MobileNav: React.FC = () => {
                 to={item.path}
                 end={item.path === '/'}
                 className={({ isActive }) => cn(
-                  'flex items-center gap-3 px-3 py-3 rounded-lg transition-all',
+                  'flex items-center gap-3 px-3 py-3 rounded-xl transition-all border border-transparent',
                   isActive
-                    ? 'bg-accent-blue/10 text-accent-blue'
-                    : 'text-text-secondary hover:bg-bg-tertiary hover:text-text-primary'
+                    ? 'bg-accent-blue/15 text-accent-blue border-accent-blue/30'
+                    : 'text-text-secondary hover:bg-bg-tertiary/70 hover:border-border/70 hover:text-text-primary'
                 )}
               >
                 <item.icon size={20} />
@@ -90,14 +90,14 @@ export const MobileNav: React.FC = () => {
             ))}
           </nav>
 
-          <div className="border-t border-border p-3 space-y-2">
+          <div className="border-t border-border/70 p-3 space-y-2">
             <NavLink
               to="/settings"
               className={({ isActive }) => cn(
-                'flex items-center gap-3 px-3 py-3 rounded-lg transition-all',
+                'flex items-center gap-3 px-3 py-3 rounded-xl transition-all border border-transparent',
                 isActive
-                  ? 'bg-accent-blue/10 text-accent-blue'
-                  : 'text-text-secondary hover:bg-bg-tertiary hover:text-text-primary'
+                  ? 'bg-accent-blue/15 text-accent-blue border-accent-blue/30'
+                  : 'text-text-secondary hover:bg-bg-tertiary/70 hover:border-border/70 hover:text-text-primary'
               )}
             >
               <Settings size={20} />

@@ -57,8 +57,8 @@ export const DashboardPage: React.FC = () => {
       {/* Estatísticas Rápidas */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {stats.map((stat, i) => (
-          <div key={i} className="bg-bg-secondary border border-border p-6 rounded-2xl flex items-center gap-4">
-            <div className={cn('p-3 rounded-xl', stat.bg)}>
+          <div key={i} className="premium-card p-6 rounded-2xl flex items-center gap-4">
+            <div className={cn('p-3 rounded-xl border border-border/60', stat.bg)}>
               <stat.icon className={stat.color} size={24} />
             </div>
             <div>
@@ -73,8 +73,8 @@ export const DashboardPage: React.FC = () => {
         {/* Coluna Esquerda: Hoje e Esta Semana */}
         <div className="lg:col-span-2 space-y-8">
           {/* Hoje */}
-          <section className="bg-bg-secondary border border-border rounded-2xl overflow-hidden shadow-sm">
-            <div className="p-4 sm:p-6 border-b border-border flex flex-wrap items-center gap-2 justify-between">
+          <section className="premium-card rounded-2xl overflow-hidden">
+            <div className="p-4 sm:p-6 border-b border-border/70 flex flex-wrap items-center gap-2 justify-between">
               <div className="flex items-center gap-2">
                 <Calendar className="text-accent-blue" size={20} />
                 <h2 className="text-xl font-bold text-text-primary">Para Hoje</h2>
@@ -128,7 +128,7 @@ export const DashboardPage: React.FC = () => {
                 <p className="text-text-muted text-sm">Sem entregas agendadas para o resto da semana.</p>
               ) : (
                 summary?.weekAssignments.map(a => (
-                  <div key={a.id} className="flex flex-wrap sm:flex-nowrap items-center gap-4 p-4 bg-bg-secondary border border-border rounded-xl">
+                  <div key={a.id} className="premium-card flex flex-wrap sm:flex-nowrap items-center gap-4 p-4 rounded-xl">
                     <div className="w-10 h-10 rounded-lg flex flex-col items-center justify-center bg-bg-tertiary shrink-0">
                       <span className="text-[10px] uppercase font-bold text-text-muted">
                         {new Date(a.deadline!).toLocaleDateString('pt', { month: 'short' })}
@@ -160,7 +160,7 @@ export const DashboardPage: React.FC = () => {
 
           <div className="space-y-4">
             {summary?.subjectStats.map(s => (
-              <div key={s.id} className="bg-bg-secondary border border-border p-5 rounded-2xl space-y-4">
+              <div key={s.id} className="premium-card p-5 rounded-2xl space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div 

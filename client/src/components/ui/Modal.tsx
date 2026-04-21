@@ -40,21 +40,21 @@ export const Modal: React.FC<ModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
+        className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity" 
         onClick={onClose}
       />
       
       {/* Content */}
       <div className={cn(
-        'relative z-50 w-full max-w-lg transform overflow-hidden rounded-t-2xl sm:rounded-xl border border-border bg-bg-secondary shadow-2xl transition-all animate-in fade-in zoom-in duration-200 max-h-[88dvh] sm:max-h-[90vh] flex flex-col',
+        'premium-glass relative z-50 w-full max-w-lg transform overflow-hidden rounded-t-2xl sm:rounded-2xl shadow-[0_28px_60px_rgba(2,8,23,0.6)] transition-all animate-in fade-in zoom-in duration-200 max-h-[88dvh] sm:max-h-[90vh] flex flex-col',
         className
       )}>
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border p-4">
+        <div className="flex items-center justify-between border-b border-border/70 p-4">
           <h3 className="text-lg font-semibold text-text-primary">{title}</h3>
           <button 
             onClick={onClose}
-            className="rounded-full p-1 text-text-muted hover:bg-bg-tertiary hover:text-text-primary"
+            className="rounded-full p-1.5 text-text-muted hover:bg-bg-tertiary/80 hover:text-text-primary transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -67,7 +67,7 @@ export const Modal: React.FC<ModalProps> = ({
 
         {/* Footer */}
         {footer && (
-          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 border-t border-border bg-bg-tertiary/30 p-4">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 border-t border-border/70 bg-bg-tertiary/25 p-4">
             {footer}
           </div>
         )}

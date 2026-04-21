@@ -39,7 +39,7 @@ export const Drawer: React.FC<DrawerProps> = ({
       {/* Backdrop */}
       <div 
         className={cn(
-          'fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300',
+          'fixed inset-0 z-50 bg-black/70 backdrop-blur-md transition-opacity duration-300',
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         )} 
         onClick={onClose}
@@ -47,16 +47,16 @@ export const Drawer: React.FC<DrawerProps> = ({
       
       {/* Drawer Content */}
       <div className={cn(
-        'fixed inset-y-0 right-0 z-50 w-full sm:max-w-xl bg-bg-secondary border-l border-border shadow-2xl transform transition-transform duration-300 ease-in-out flex h-[100dvh] flex-col',
+        'premium-glass fixed inset-y-0 right-0 z-50 w-full sm:max-w-xl border-l border-border/70 shadow-[0_28px_60px_rgba(2,8,23,0.6)] transform transition-transform duration-300 ease-in-out flex h-[100dvh] flex-col',
         isOpen ? 'translate-x-0' : 'translate-x-full',
         className
       )}>
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border p-4 h-16 shrink-0">
+        <div className="flex items-center justify-between border-b border-border/70 p-4 h-16 shrink-0">
           <h3 className="text-lg font-semibold text-text-primary truncate pr-2">{title}</h3>
           <button
             onClick={onClose}
-            className="rounded-full p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:bg-bg-tertiary hover:text-text-primary transition-colors"
+            className="rounded-full p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-text-muted hover:bg-bg-tertiary/80 hover:text-text-primary transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -69,7 +69,7 @@ export const Drawer: React.FC<DrawerProps> = ({
 
         {/* Footer */}
         {footer && (
-          <div className="border-t border-border bg-bg-tertiary/30 p-4 shrink-0 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3">
+          <div className="border-t border-border/70 bg-bg-tertiary/25 p-4 shrink-0 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3">
             {footer}
           </div>
         )}

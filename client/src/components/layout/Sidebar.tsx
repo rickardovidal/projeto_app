@@ -41,16 +41,23 @@ export const Sidebar: React.FC = () => {
   return (
     <aside 
       className={cn(
-        'hidden md:flex flex-col h-[100dvh] border-r border-border bg-bg-secondary transition-all duration-300',
+        'premium-glass hidden md:flex flex-col h-[100dvh] border-r border-border/70 transition-all duration-300',
         isCollapsed ? 'w-20' : 'w-64'
       )}
     >
       {/* Header */}
-      <div className="h-16 flex items-center justify-between px-6 border-b border-border">
-        {!isCollapsed && <span className="text-xl font-bold text-accent-blue tracking-tight">StudyFlow</span>}
+      <div className="h-16 flex items-center justify-between px-4 border-b border-border/70">
+        {!isCollapsed && (
+          <div className="flex items-center gap-2.5">
+            <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-accent-blue to-[#3d6fe0] text-white font-bold text-sm inline-flex items-center justify-center shadow-[0_8px_18px_rgba(92,141,255,0.4)]">
+              SF
+            </div>
+            <span className="text-xl font-bold text-text-primary tracking-tight">StudyFlow</span>
+          </div>
+        )}
         <button 
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1.5 rounded-lg bg-bg-tertiary text-text-muted hover:text-text-primary transition-colors"
+          className="p-2 rounded-xl bg-bg-tertiary/80 border border-border/70 text-text-muted hover:text-text-primary transition-colors"
         >
           {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
@@ -64,10 +71,10 @@ export const Sidebar: React.FC = () => {
             to={item.path}
             end={item.path === '/'}
             className={({ isActive }) => cn(
-              'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group relative',
+              'flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group relative border border-transparent',
               isActive 
-                ? 'bg-accent-blue/10 text-accent-blue' 
-                : 'text-text-secondary hover:bg-bg-tertiary hover:text-text-primary'
+                ? 'bg-accent-blue/15 text-accent-blue border-accent-blue/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]' 
+                : 'text-text-secondary hover:bg-bg-tertiary/70 hover:text-text-primary hover:border-border/70'
             )}
           >
             <item.icon size={22} className={cn('shrink-0')} />
@@ -82,11 +89,11 @@ export const Sidebar: React.FC = () => {
       </nav>
 
       {/* Footer / User Profile */}
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border/70">
         <NavLink 
           to="/settings"
           className={({ isActive }) => cn(
-            'flex items-center gap-3 px-3 py-2.5 rounded-lg mb-2 text-text-secondary hover:bg-bg-tertiary hover:text-text-primary transition-colors',
+            'flex items-center gap-3 px-3 py-2.5 rounded-xl mb-2 border border-transparent text-text-secondary hover:bg-bg-tertiary/70 hover:border-border/70 hover:text-text-primary transition-colors',
             isActive && 'text-accent-blue'
           )}
         >
@@ -94,9 +101,9 @@ export const Sidebar: React.FC = () => {
           {!isCollapsed && <span className="font-medium">Definições</span>}
         </NavLink>
 
-        <div className="flex items-center justify-between gap-3 px-3 py-2 bg-bg-tertiary rounded-xl overflow-hidden">
+        <div className="premium-card flex items-center justify-between gap-3 px-3 py-2 rounded-2xl overflow-hidden">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="h-9 w-9 rounded-full bg-accent-blue flex items-center justify-center text-white shrink-0 font-bold">
+            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-accent-blue to-[#3d6fe0] flex items-center justify-center text-white shrink-0 font-bold">
               {user?.name?.[0] || 'U'}
             </div>
             {!isCollapsed && (
