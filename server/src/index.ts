@@ -17,7 +17,8 @@ import { initNotificationCron } from './services/notificationCron.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT || 3001);
+const HOST = '0.0.0.0';
 const allowedOrigins = (process.env.CORS_ORIGIN || '')
   .split(',')
   .map((origin) => origin.trim())
@@ -54,6 +55,6 @@ app.get('/api/health', (req, res) => {
 
 initNotificationCron();
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on ${HOST}:${PORT}`);
 });

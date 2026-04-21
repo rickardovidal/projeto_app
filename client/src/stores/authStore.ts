@@ -68,8 +68,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       setApiSession(session);
       
       if (session) {
-        const { data: user } = await api.post('/auth/verify');
-        set({ user, initialized: true, isLoading: false });
+        try {
+          const { data: user } = await api.post('/auth/verify');
+          set({ user, initialized: true, isLoading: false });
+        } catch (error) {
+          console.error('Auth verify request failed during initialization:', error);
+          setApiSession(null);
+          set({ user: null, initialized: true, isLoading: false });
+        }
       } else {
         set({ user: null, initialized: true, isLoading: false });
       }
@@ -78,10 +84,16 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         const { data } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
           setApiSession(session);
 
-          if (event === 'SIGNED_IN' && session) {
-            const { data: user } = await api.post('/auth/verify');
-            set({ user, initialized: true, isLoading: false });
-          } else if (event === 'SIGNED_OUT') {
+          try {
+            if (event === 'SIGNED_IN' && session) {
+              const { data: user } = await api.post('/auth/verify');
+              set({ user, initialized: true, isLoading: false });
+            } else if (event === 'SIGNED_OUT') {
+              set({ user: null, initialized: true, isLoading: false });
+            }
+          } catch (error) {
+            console.error('Auth verify request failed on auth state change:', error);
+            setApiSession(null);
             set({ user: null, initialized: true, isLoading: false });
           }
         });

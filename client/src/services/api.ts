@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3001/api',
+  timeout: 15000,
 });
 
 let accessToken: string | null = null;
