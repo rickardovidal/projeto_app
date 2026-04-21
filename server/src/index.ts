@@ -65,6 +65,15 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    message: 'StudyFlow API is running',
+    uptimeSeconds: Math.round(process.uptime()),
+    requestLoggingEnabled,
+  });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/assignments', assignmentRoutes);
@@ -84,15 +93,6 @@ app.use((err: unknown, req: Request, res: Response, _next: NextFunction) => {
 
   console.error(`[ERR] ${req.method} ${req.originalUrl}`, err);
   res.status(500).json({ error: 'Internal server error' });
-});
-
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    message: 'StudyFlow API is running',
-    uptimeSeconds: Math.round(process.uptime()),
-    requestLoggingEnabled,
-  });
 });
 
 initNotificationCron();
