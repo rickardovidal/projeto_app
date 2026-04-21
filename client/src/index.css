@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #0F1117;
+  --color-bg-secondary: #1A1D27;
+  --color-bg-tertiary: #252836;
+  --color-border: #2E3244;
+  --color-text-primary: #F1F3F9;
+  --color-text-secondary: #8B92A9;
+  --color-text-muted: #4E5568;
+  --color-accent-blue: #4F86F7;
+  --color-accent-blue-hover: #6B9BF8;
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-danger: #F87171;
+  
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+:root {
+  --bg-primary: #0F1117;
+  --bg-secondary: #1A1D27;
+  --bg-tertiary: #252836;
+  --border: #2E3244;
+  --text-primary: #F1F3F9;
+  --text-secondary: #8B92A9;
+  --text-muted: #4E5568;
+  --accent-blue: #4F86F7;
+  --accent-blue-hover: #6B9BF8;
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger: #F87171;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+#studyflow-datepicker-portal {
+  position: relative;
+  z-index: 120;
+}
+
+.studyflow-datepicker-popper {
+  z-index: 120 !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Rich Text Editor — document page styles
+   ────────────────────────────────────────────────────────── */
+.rich-editor-page .ProseMirror {
+  outline: none;
+  min-height: 100%;
+  color: #111827;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.8;
+  caret-color: #1d4ed8;
+}
+
+.rich-editor-page .ProseMirror h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0.8em 0 0.4em;
+  color: #030712;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.3em;
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+.rich-editor-page .ProseMirror h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 0.8em 0 0.3em;
+  color: #111827;
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+.rich-editor-page .ProseMirror h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0.6em 0 0.2em;
+  color: #1f2937;
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+.rich-editor-page .ProseMirror p {
+  margin: 0 0 1em;
+}
+
+.rich-editor-page .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
+.rich-editor-page .ProseMirror strong { font-weight: 700; }
+.rich-editor-page .ProseMirror em { font-style: italic; }
+.rich-editor-page .ProseMirror u { text-decoration: underline; }
+.rich-editor-page .ProseMirror s { text-decoration: line-through; }
+
+.rich-editor-page .ProseMirror code {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 0.88em;
+  color: #dc2626;
+}
+
+.rich-editor-page .ProseMirror pre {
+  background: #1e293b;
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  margin: 1em 0;
+  overflow-x: auto;
+}
+
+.rich-editor-page .ProseMirror pre code {
+  background: transparent;
+  border: none;
+  color: #e2e8f0;
+  font-size: 0.9em;
+  padding: 0;
+}
+
+.rich-editor-page .ProseMirror blockquote {
+  border-left: 4px solid #3b82f6;
+  padding: 0.5em 0 0.5em 1.2em;
+  margin: 1em 0;
+  color: #374151;
+  font-style: italic;
+  background: #eff6ff;
+  border-radius: 0 6px 6px 0;
+}
+
+.rich-editor-page .ProseMirror ul {
+  list-style: disc;
+  padding-left: 1.8em;
+  margin: 0.5em 0 1em;
+}
+
+.rich-editor-page .ProseMirror ol {
+  list-style: decimal;
+  padding-left: 1.8em;
+  margin: 0.5em 0 1em;
+}
+
+.rich-editor-page .ProseMirror li { margin: 0.25em 0; }
+
+.rich-editor-page .ProseMirror a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rich-editor-page .ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1em 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.rich-editor-page .ProseMirror mark {
+  background: #fef08a;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Tables */
+.rich-editor-page .ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.95em;
+}
+
+.rich-editor-page .ProseMirror th {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 10px 14px;
+  font-weight: 600;
+  text-align: left;
+  color: #1e293b;
+}
+
+.rich-editor-page .ProseMirror td {
+  border: 1px solid #e2e8f0;
+  padding: 9px 14px;
+  vertical-align: top;
+}
+
+.rich-editor-page .ProseMirror tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+/* Table selected cell */
+.rich-editor-page .ProseMirror .selectedCell {
+  background: #dbeafe !important;
+}
+
+/* Selection */
+.rich-editor-page .ProseMirror ::selection {
+  background: #bfdbfe;
+}
+
+/* Horizontal rule */
+.rich-editor-page .ProseMirror hr {
+  border: none;
+  border-top: 2px solid #e5e7eb;
+  margin: 2em 0;
+}

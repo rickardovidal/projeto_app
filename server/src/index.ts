@@ -1,0 +1,59 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
+import subjectRoutes from './routes/subjects.js';
+import assignmentRoutes from './routes/assignments.js';
+import todoRoutes from './routes/todos.js';
+import dashboardRoutes from './routes/dashboard.js';
+import fileRoutes from './routes/files.js';
+import noteRoutes from './routes/notes.js';
+import documentRoutes from './routes/documents.js';
+import notificationRoutes from './routes/notifications.js';
+import calendarRoutes from './routes/calendar.js';
+import { initNotificationCron } from './services/notificationCron.js';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+const allowedOrigins = (process.env.CORS_ORIGIN || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+app.use(helmet());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+  })
+);
+app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/subjects', subjectRoutes);
+app.use('/api/assignments', assignmentRoutes);
+app.use('/api/todos', todoRoutes);
+app.use('/api/dashboard', dashboardRoutes);
+app.use('/api', fileRoutes);
+app.use('/api', noteRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/calendar', calendarRoutes);
+app.use('/api/documents', documentRoutes);
+
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'StudyFlow API is running' });
+});
+
+initNotificationCron();
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

@@ -1,0 +1,130 @@
+// server/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String       @id @default(uuid())
+  email         String       @unique
+  name          String?
+  avatarUrl     String?
+  pushToken     String?      // Web Push subscription JSON
+  gcalToken     String?      // Google Calendar OAuth token (encrypted)
+  createdAt     DateTime     @default(now())
+  subjects      Subject[]
+  todos         Todo[]
+  documents     Document[]
+}
+
+model Subject {
+  id          String       @id @default(uuid())
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  color       String       // hex color, ex: "#3B82F6"
+  icon        String?      // emoji ou nome de ícone
+  createdAt   DateTime     @default(now())
+  assignments Assignment[]
+}
+
+model Assignment {
+  id             String       @id @default(uuid())
+  subjectId      String
+  subject        Subject      @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  title          String
+  description    String?
+  deadline       DateTime?
+  priority       Priority     @default(MEDIUM)
+  status         Status       @default(PENDING)
+  gcalEventId    String?      // ID do evento no Google Calendar
+  notifyBefore   Int?         // minutos antes do prazo para notificar
+  notifiedAt     DateTime?    // timestamp de quando a notificação foi enviada
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  notes          Note[]
+  folders        Folder[]
+  documents      Document[]
+}
+
+model Todo {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  deadline    DateTime?
+  priority    Priority   @default(MEDIUM)
+  status      Status     @default(PENDING)
+  completed   Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Note {
+  id           String     @id @default(uuid())
+  assignmentId String
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  content      String     // HTML do TipTap ou texto simples
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Folder {
+  id           String     @id @default(uuid())
+  assignmentId String
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  parentId     String?
+  parent       Folder?    @relation("FolderTree", fields: [parentId], references: [id])
+  children     Folder[]   @relation("FolderTree")
+  name         String
+  createdAt    DateTime   @default(now())
+  files        File[]
+}
+
+model File {
+  id          String   @id @default(uuid())
+  folderId    String
+  folder      Folder   @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  name        String
+  r2Key       String   // chave no Cloudflare R2
+  r2Url       String   // URL público ou signed URL
+  mimeType    String
+  size        Int      // bytes
+  createdAt   DateTime @default(now())
+}
+
+model Document {
+  id           String       @id @default(uuid())
+  userId       String
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignmentId String?
+  assignment   Assignment?  @relation(fields: [assignmentId], references: [id])
+  title        String
+  type         DocType      @default(RICH_TEXT)
+  content      String       // JSON do TipTap ou source LaTeX
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  DONE
+}
+
+enum DocType {
+  RICH_TEXT
+  LATEX
+}
